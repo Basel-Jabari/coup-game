@@ -40,6 +40,7 @@ Keep tests in their assigned folders. Do not add a root `tests/` folder. Keep th
 - Keep the description accurate for the final change. Remove old claims, chat history, and plans that were dropped. Never claim a check passed unless its result was confirmed.
 - Start from [.github/pull_request_template.md](.github/pull_request_template.md). Use only the sections that help explain the change; always include checks and the docs decision.
 - For stacked PRs, name the earlier PR, select the correct base branch, and explain the merge order. After an earlier PR is squash-merged, rebase the remaining work onto its new base and update the PR target before merging.
+- GitHub deletes merged remote branches automatically. Check the base of any remaining PR after a merge. Use commit links for docs and screenshots in PR descriptions so the links survive branch deletion.
 - Use squash merging. Keep the owner `Basel-Jabari` in the ruleset's Always bypass list unless the user asks to change it. The saved ruleset file records GitHub settings; committing it alone does not apply those settings.
 
 ## Documentation

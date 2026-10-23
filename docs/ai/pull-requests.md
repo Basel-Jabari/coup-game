@@ -17,6 +17,10 @@ Follow the [repository rules](../../AGENTS.md) and use the [PR template](../../.
 
 Name the earlier PR, select the right base branch, and explain the merge order. Use squash merging. After the earlier PR is squash-merged, rebase only the remaining work onto its new base and update the PR target before merging.
 
+GitHub is set to delete merged remote branches automatically. After a merge, check the base of any open PR that depended on that branch. If a rebase changes published commits, use a push with an explicit force-with-lease check so another person's newer work is not overwritten.
+
+In PR descriptions, link docs and screenshots to a commit that contains them. Avoid links that rely on a feature branch, because that branch is removed after merging.
+
 Keep the saved ruleset in line with the live GitHub settings when changing repository rules. Preserve the owner `Basel-Jabari` in the Always bypass list unless the user asks to change it. The file records settings; committing it does not apply them to GitHub.
 
 ## Maintain docs
