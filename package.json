@@ -1,0 +1,14 @@
+{
+  "name": "coup-game",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": ["frontend"],
+  "engines": { "node": "^22.22.2 || ^24.15.0 || >=26.0.0" },
+  "scripts": {
+    "dev": "npm run dev --workspace=@coup-game/frontend",
+    "build": "npm run build --workspace=@coup-game/frontend",
+    "preview": "npm run preview --workspace=@coup-game/frontend",
+    "typecheck": "npm run typecheck --workspace=@coup-game/frontend",
+    "test": "npm run test --workspace=@coup-game/frontend"
+  }
+}
