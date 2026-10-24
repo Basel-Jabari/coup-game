@@ -6,9 +6,9 @@ Follow the [repository rules](../../AGENTS.md) and use the [PR template](../../.
 
 1. Read the final diff and its purpose. Keep unrelated work out of the PR.
 2. Check existing titles across open, merged, and closed PRs. Use the next order number in `[N] Clear name` for a new PR, and keep the number when updating one. Do not restart the count for each stack.
-3. Write a short title that names the result, such as `[1] Set up folders and repository rules` or `[2] Add the desktop login screen`.
+3. Write a short title that names the result, such as `[1] Set up folders and repository rules`.
 4. Explain why the change is needed and what it does now. Give enough detail for someone who has not read the chat. Add an example, screenshot, or link when it helps.
-5. List checks and confirmed results. State what was not checked and why. Do not describe planned checks as passed.
+5. List checks and confirmed results, including the independent review verdict and what it changed. State what was not checked and why. Do not describe planned checks as passed.
 6. Link updated docs, or explain why none needed changing. Include known limits and related PRs when relevant. Keep the description about the final result and remove old claims.
 7. Use B1-B2 English in the title and body. Choose common words, use short sentences, and explain needed technical terms.
 8. After creating or editing the PR, confirm its title, body, base branch, and check results.
