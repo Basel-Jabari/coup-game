@@ -4,7 +4,7 @@ These are the shared rules for Codex and Claude Code in this repository. Keep on
 
 ## Project direction
 
-Build one Coup game platform. The target stack is React, TypeScript, Vite, and Tailwind CSS for the interface, with one modular FastAPI backend, MySQL, and WebSockets. The backend runtime is not implemented yet. These instructions define how to add it; they do not mean its packages, commands, or services already exist.
+Build one Coup game platform. The target stack is React, TypeScript, Vite, and Tailwind CSS for the interface, with one modular FastAPI backend, MySQL, and WebSockets. The backend runtime is not implemented yet. These instructions define how to add it; they do not mean its packages, commands, or services already exist. Frontend screens do not connect to a server until the user asks for backend integration.
 
 ## Task guides
 
@@ -12,20 +12,24 @@ Build one Coup game platform. The target stack is React, TypeScript, Vite, and T
 | --- | --- |
 | Backend feature, HTTP endpoint, or room/game message | [Backend rules](backend/AGENTS.md) and [backend feature guide](docs/ai/backend-feature.md) |
 | Database query, transaction, or schema change | [Backend rules](backend/AGENTS.md) and [backend data guide](docs/ai/backend-data.md) |
+| Frontend screen, component, style, or UI test | [Frontend rules](frontend/AGENTS.md) |
+| Independent review before a commit | [AI review guide](docs/ai/ai-review.md) |
 | Create or update a PR, or maintain docs | [PR and docs guide](docs/ai/pull-requests.md) |
 | Understand the AI file setup | [Tool setup](docs/ai/tool-setup.md) |
 
-The matching skills are `coup-backend-feature`, `coup-backend-data`, and `coup-pull-request`. Their entry files are under `.agents/skills/` for Codex and `.claude/skills/` for Claude. Both point to the same guides above. Read the guide directly if the current tool cannot load skills.
+The matching skills are `coup-backend-feature`, `coup-backend-data`, `coup-frontend-feature`, `coup-ai-review`, and `coup-pull-request`. Their entry files are under `.agents/skills/` for Codex and `.claude/skills/` for Claude. Both point to the same guides above. Read the guide directly if the current tool cannot load skills.
 
 ## Project layout
 
-- `frontend/`: browser interface, styles, and images.
+- `frontend/`: browser interface, styles, and images. Read [frontend/AGENTS.md](frontend/AGENTS.md) before changing frontend files.
+- `frontend/tests/`: frontend tests.
 - `backend/app/`: backend application code. Read [backend/AGENTS.md](backend/AGENTS.md) before changing backend files.
 - `backend/tests/`: backend tests.
 - `integration/contracts/`: agreed API and message formats. Mark proposed formats as proposals.
 - `integration/mocks/`: sample data for development and tests.
 - `integration/tests/`: checks across the frontend and backend.
 - `docs/`: project notes, design details, setup guidance, and saved previews.
+- `scripts/`: shared developer tools, such as the AI review command.
 - `.github/`: PR templates, CI, and saved repository rules.
 
 Use one feature module for each backend area. Keep HTTP routes, request/response models, business rules, database code, and external clients in their assigned files. Add files when the feature needs them; keep the pure Coup engine separate from web and database code.
@@ -52,6 +56,8 @@ Keep docs under `docs/`, grouped by topic when needed. Put saved screenshots und
 If no docs update is needed, explain why in the PR. Do not add unrelated docs just to fill a section.
 
 ## Checks
+
+Before committing and pushing frontend work, ask the other AI tool for an independent, read-only review: Codex reviews Claude's work, and Claude reviews Codex's work. Give it the user's requirements, the checked design values, and relevant images. Check its findings, fix the valid ones, and report the result honestly in the PR. Follow the [AI review guide](docs/ai/ai-review.md).
 
 Run checks that match the change. When frontend code or its setup changes, use the available project test and build commands. When only prose changes, check links, file paths, and patch formatting. Report checks that were skipped and give the reason.
 
