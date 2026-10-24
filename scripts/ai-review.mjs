@@ -105,11 +105,17 @@ ${patch.length > 180000 ? "The patch was cut. Read the relevant source files to 
   const output = new Promise((resolve, reject) => {
     let stdout = "";
     let stderr = "";
+    let inputError;
     child.stdout.on("data", chunk => { stdout += chunk; });
     child.stderr.on("data", chunk => { stderr += chunk; });
+    // If the prompt cannot be sent, stop the reviewer and wait for it to close before cleanup.
+    child.stdin.on("error", error => { inputError = error; child.kill(); });
     child.on("error", reject);
-    child.stdin.on("error", reject);
-    child.on("close", code => code === 0 ? resolve(stdout) : reject(new Error(`${name} review failed (exit ${code}): ` + (stderr || stdout).slice(-3000))));
+    child.on("close", code => {
+      if (inputError) reject(inputError);
+      else if (code === 0) resolve(stdout);
+      else reject(new Error(`${name} review failed (exit ${code}): ` + (stderr || stdout).slice(-3000)));
+    });
   });
   child.stdin.end(prompt);
   const stdout = await output;
