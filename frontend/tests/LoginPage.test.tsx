@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { LoginPage } from "../../../frontend/src/pages/LoginPage";
+import { LoginPage } from "../src/pages/LoginPage";
 
 afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
 

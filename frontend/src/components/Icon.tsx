@@ -1,6 +1,6 @@
 import type { ReactNode, SVGProps } from "react";
 
-type IconName = "mail" | "lock" | "eye" | "eye-off" | "warning";
+export type IconName = "mail" | "lock" | "eye" | "eye-off" | "warning";
 
 const paths: Record<IconName, ReactNode> = {
   warning: (

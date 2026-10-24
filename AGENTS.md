@@ -24,7 +24,7 @@ The matching skills are `coup-backend-feature`, `coup-backend-data`, and `coup-p
 - `backend/tests/`: backend tests.
 - `integration/contracts/`: agreed API and message formats. Mark proposed formats as proposals.
 - `integration/mocks/`: sample data for development and tests.
-- `integration/tests/`: integration checks, including the current login UI tests.
+- `integration/tests/`: checks across the frontend and backend.
 - `docs/`: project notes, design details, setup guidance, and saved previews.
 - `.github/`: PR templates, CI, and saved repository rules.
 

@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import "@fontsource/playfair-display/latin-400.css";
 import "@fontsource/playfair-display/latin-700.css";
 import "@fontsource/roboto/latin-400.css";
@@ -8,8 +8,8 @@ import "@fontsource/42dot-sans/latin-400.css";
 import { LoginPage } from "./pages/LoginPage";
 import "./styles/index.css";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
     <LoginPage />
-  </React.StrictMode>,
+  </StrictMode>,
 );
