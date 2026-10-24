@@ -28,6 +28,7 @@ coverage/
 htmlcov/
 playwright-report/
 test-results/
+.review/
 
 # Local logs and operating-system files
 *.log
