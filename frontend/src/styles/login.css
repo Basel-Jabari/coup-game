@@ -197,7 +197,13 @@
   transition: box-shadow 320ms ease, transform 100ms ease;
 }
 .sign-in-button:hover { box-shadow: 0 0 18px rgb(201 161 72 / 45%), inset 0 0 8px rgb(201 161 72 / 25%); }
-.sign-in-button:active { transform: translateY(1px); }
+/* Figma "Pressed" button state: gold fill, navy text, and a stronger glow. */
+.sign-in-button:active {
+  transform: translateY(1px);
+  background: linear-gradient(90deg, #997b37 1%, #c9a24b 50%, #997b37 100%);
+  color: var(--color-coup-navy);
+  box-shadow: 0 4px 40px 2px rgb(201 161 72 / 56%);
+}
 .sign-in-button:focus-visible { outline: 2px solid var(--color-coup-cream); outline-offset: 5px; }
 .signup-prompt {
   position: absolute;

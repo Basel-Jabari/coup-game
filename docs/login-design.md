@@ -34,6 +34,7 @@ The cards (instance 120:4380, 715 x 447 at x 673, y 245), coins, and emblem are 
 - **Card hover.** When the pointer enters the 890 x 650 card area, the four back cards move behind the middle card in 300 ms with ease-out, as in Figma's tight "Variant3" pose. The moves are about −113, +116, +66, and −89 px (Figma values scaled to the 715 px instance). The middle card gets a warm halo, 12% more brightness, and a soft gold edge at 0.25 opacity. The shared glow fades from 0.8 to 0.3, and the background aura from 0.35 to 0.15. Leaving the area restores everything.
 - **Panel hover.** The border changes to #C9A24B gold at the top and #2D354F dark blue at the bottom in 200 ms, as in Figma (120:1135).
 - **Sign-in hover.** The button gets an outer and inner edge glow. Its center stays transparent.
+- **Sign-in pressed.** While the button is held down, it follows the Figma "Pressed" state (Frame 1, node 233:471): a gold gradient fill (#997B37, #C9A24B, #997B37), dark navy text (#0D1632), and a stronger gold glow. The user asked for this state.
 - **Inputs.** Inputs use the normal text cursor and native clicks. Focus turns the border and leading icon gold and hides the hint. Leaving a field keeps its value. The text is vertically centered; the user chose this over Figma's lower text position.
 - **Password eye.** It shows or hides the password. Edge's own extra eye is hidden with `::-ms-reveal`, as [Microsoft documents](https://learn.microsoft.com/en-us/microsoft-edge/web-platform/password-reveal). Autocomplete still works.
 - Reduced-motion settings remove the transitions.
@@ -60,4 +61,4 @@ Run `npm test` for the UI tests in `frontend/tests/` and `npm run build` for the
 
 ## Previews
 
-[Default](previews/login-desktop.png), [wide desktop](previews/login-wide.png), [tall desktop](previews/login-tall.png), [card hover](previews/login-hover.png), [panel hover](previews/login-panel-hover.png), [email focus](previews/login-focus.png), [entered text](previews/login-filled.png), and [field warnings](previews/login-validation.png).
+[Default](previews/login-desktop.png), [wide desktop](previews/login-wide.png), [tall desktop](previews/login-tall.png), [card hover](previews/login-hover.png), [panel hover](previews/login-panel-hover.png), [email focus](previews/login-focus.png), [entered text](previews/login-filled.png), [field warnings](previews/login-validation.png), and [pressed button](previews/login-pressed.png).
