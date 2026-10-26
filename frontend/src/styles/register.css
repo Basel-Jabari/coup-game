@@ -1,0 +1,126 @@
+/* Register positions in the 1440 x 1024 Figma frame "Desktop - Register default" (233:1402). Shared looks are in auth.css. */
+.register-scene { height: 1024px; }
+.register-scene .card-artwork { left: -35px; top: 184px; }
+.register-panel {
+  /* Each warning adds 32 px and moves everything below it, as on the login screen. */
+  --name-warning-space: 0px;
+  --email-warning-space: 0px;
+  --password-warning-space: 0px;
+  --confirm-warning-space: 0px;
+  --password-shift: calc(var(--name-warning-space) + var(--email-warning-space));
+  --confirm-shift: calc(var(--password-shift) + var(--password-warning-space));
+  --warning-space: calc(var(--confirm-shift) + var(--confirm-warning-space));
+  --level-weak: #ff383c;
+  --level-fair: #e0b652;
+  --level-good: #34c759;
+  --level-strong: #b388ff;
+  left: 847px;
+  top: 162px;
+  height: calc(700px + var(--warning-space));
+}
+.register-panel.has-name-warning { --name-warning-space: 32px; }
+.register-panel.has-email-warning { --email-warning-space: 32px; }
+.register-panel.has-password-warning { --password-warning-space: 32px; }
+.register-panel.has-confirm-warning { --confirm-warning-space: 32px; }
+.register-panel .coup-emblem { left: 200px; top: 11px; width: 92px; height: 92px; }
+.register-panel h1 { left: 61px; top: 93px; }
+.register-panel .credential-field { left: 48px; }
+.register-panel .name-field { top: 179px; }
+.register-panel .email-field { top: calc(261px + var(--name-warning-space)); }
+.register-panel .password-field { top: calc(352px + var(--password-shift)); }
+.register-panel .confirm-field { top: calc(468px + var(--confirm-shift)); }
+.register-panel .name-field .field-icon { left: 10.25px; top: 13.25px; width: 26.5px; height: 29.5px; }
+/* The password warning sits 8 px below the strength bars, in place of the hint, and adds 32 px like the others. */
+.register-panel .password-field .field-warning { top: 83px; left: 11px; }
+
+/* Strength levels color the password border, the bars, and the label. */
+.register-panel .level-weak .password-field { border-color: var(--level-weak); }
+.register-panel .level-fair .password-field { border-color: var(--level-fair); }
+.register-panel .level-good .password-field { border-color: var(--level-good); }
+.register-panel .level-strong .password-field { border-color: var(--level-strong); }
+/* A warning wins over the strength color, so every warned field looks the same, as on the login. */
+.register-panel .password-strength .password-field.has-warning { border-color: var(--color-coup-gold); }
+.password-meter { position: absolute; left: 64px; top: calc(426px + var(--password-shift)); width: 355px; height: 4px; }
+.meter-bar { position: absolute; top: 0; width: 79px; height: 4px; border-radius: 2px; background: #313a57; }
+.meter-bar:nth-child(2) { left: 92px; }
+.meter-bar:nth-child(3) { left: 183px; }
+.meter-bar:nth-child(4) { left: 276px; }
+.level-weak .meter-bar.on { background: var(--level-weak); }
+.level-fair .meter-bar.on { background: var(--level-fair); }
+.level-good .meter-bar.on { background: var(--level-good); }
+.level-strong .meter-bar.on { background: var(--level-strong); }
+.password-level {
+  position: absolute;
+  left: 430px;
+  top: calc(414px + var(--password-shift));
+  margin: 0;
+  color: #fff;
+  font: 24px/normal var(--font-body);
+  white-space: nowrap;
+}
+.password-strength[class*="level-"] .password-level { font: 800 23px/normal "Abhaya Libre", Georgia, serif; }
+.level-weak .password-level { left: 424px; color: var(--level-weak); font-size: 24px; }
+.level-fair .password-level { left: 426px; color: var(--level-fair); }
+.level-good .password-level { left: 423px; color: var(--level-good); }
+.level-strong .password-level { left: 421px; color: var(--level-strong); }
+.password-hint {
+  position: absolute;
+  left: 62px;
+  top: calc(436px + var(--password-shift));
+  margin: 0;
+  color: #7d8bad;
+  font: 20px/normal var(--font-body);
+}
+
+/* The "?" button opens short password tips on hover or focus. The tips box is not in Figma. */
+.password-help {
+  position: absolute;
+  left: 456px;
+  top: calc(373px + var(--password-shift));
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #c99b34;
+  cursor: help;
+}
+.password-help img { position: absolute; left: -6px; top: -6px; width: 37px; max-width: none; height: 37px; pointer-events: none; }
+.password-help span { position: absolute; left: 7px; top: 0; font: 700 22px/normal "Inria Serif", Georgia, serif; letter-spacing: .44px; }
+.password-help:focus-visible { outline: 2px solid var(--color-coup-gold); outline-offset: 4px; }
+.password-tips {
+  position: absolute;
+  z-index: 2;
+  left: 151px;
+  top: calc(363px + var(--password-shift));
+  width: 330px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--color-coup-gold);
+  border-radius: 18px;
+  background: var(--color-coup-navy);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 45%);
+  color: var(--color-coup-cream);
+  font: 16px/22px var(--font-body);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition: opacity 150ms ease, visibility 150ms ease;
+}
+.password-tips strong { display: block; margin-bottom: 4px; color: var(--color-coup-gold); }
+.password-tips ul { margin: 0; padding-left: 18px; list-style: disc; }
+.password-tips li::marker { color: var(--color-coup-gold); }
+.password-tips.open { opacity: 1; visibility: visible; }
+
+.register-panel .auth-button { left: 47px; top: calc(569px + var(--warning-space)); }
+.signin-prompt {
+  position: absolute;
+  left: 90px;
+  top: calc(643px + var(--warning-space));
+  margin: 0;
+  color: var(--color-coup-cream);
+  font-size: 22px;
+  line-height: 32px;
+  white-space: nowrap;
+}
+.signin-link { color: #c9a24b; font-size: 24px; }

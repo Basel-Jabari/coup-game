@@ -2,7 +2,7 @@
 
 ## Scope
 
-Login screen only, in English, for desktop. It is a frontend preview: it checks the fields locally and never contacts a server. Registration, password recovery, authentication, and the game are not part of it. Backend integration starts only when the user asks for it.
+Login screen, in English, for desktop. It is a frontend preview: it checks the fields locally and never contacts a server. Password recovery, authentication, and the game are not part of it. The register screen has its own [note](register-design.md); both screens share the styles in `frontend/src/styles/auth.css`. Backend integration starts only when the user asks for it.
 
 Source: [Figma design](https://www.figma.com/design/gSwvUJYZiyFV5LTaTRcQvW/ui-login-register?node-id=120-3855), frame "Desktop - login default" (120:3855), 1440 x 922. Design version: 23 October 2026, with Noor's changes. The motion page gave the card poses and the panel hover. Prototype keyboard shortcuts are not app shortcuts.
 
@@ -51,7 +51,7 @@ Sign in and Enter check the fields locally:
 
 Spaces around the email are ignored. The password has no length rule. A warning appears 8 px below its field with the yellow icon, and the field border turns gold. Each warning adds 32 px, so the panel grows to 614 px with both. Editing a field clears only its warning. Submission keeps both values.
 
-Valid fields do nothing yet. There is no request, loading state, red error, or retry delay; only the backend can decide whether an account exists. "Forgot your password?" and "Sign up" show a short "not available yet" notice.
+Valid fields do nothing yet. There is no request, loading state, red error, or retry delay; only the backend can decide whether an account exists. "Forgot your password?" shows a short "not available yet" notice. "Sign up" opens the register screen at `/register`.
 
 ## Run and test
 

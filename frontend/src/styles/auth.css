@@ -1,0 +1,175 @@
+/* Shared by the login and register screens. Each screen file sets its scene height and the positions. */
+.auth-screen {
+  position: relative;
+  min-width: 1024px;
+  height: 100dvh;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-coup-ink) 10%, var(--color-coup-navy) 91%);
+}
+.auth-scene {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1440px;
+  transform-origin: center;
+}
+.scene-background { position: absolute; inset: 0; width: 1440px; height: 922px; overflow: visible; pointer-events: none; }
+.card-artwork { position: absolute; width: 890px; height: 650px; }
+.coup-cards { position: absolute; left: 82px; top: 105px; width: 715px; height: 447px; overflow: visible; pointer-events: none; }
+.card-layer { transition: transform 300ms ease-out; }
+.card-contessa { filter: brightness(1); transition: filter 300ms ease-out; }
+.card-selected-edge, .card-selected-halo { opacity: 0; transition: opacity 300ms ease-out; }
+.card-aura-shape { opacity: .35; transition: opacity 300ms ease-out; }
+.card-glow-color { flood-opacity: .8; transition: flood-opacity 300ms ease-out; }
+@media (hover: hover) and (pointer: fine) {
+  /* Variant3 translations, scaled from the 708.49 px source to the 715 px instance. */
+  .card-artwork:hover .card-ambassador { transform: translateX(-113.03px); }
+  .card-artwork:hover .card-assassin { transform: translateX(116.06px); }
+  .card-artwork:hover .card-duke { transform: translateX(65.6px); }
+  .card-artwork:hover .card-captain { transform: translateX(-88.81px); }
+  .card-artwork:hover .card-aura-shape { opacity: .15; }
+  .card-artwork:hover .card-glow-color { flood-opacity: .3; }
+  .card-artwork:hover .card-contessa { filter: brightness(1.12); }
+  .card-artwork:hover .card-selected-halo { opacity: .95; }
+  .card-artwork:hover .card-selected-edge { opacity: .25; }
+}
+.card-aura { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.auth-panel {
+  position: absolute;
+  width: 500px;
+  border: 4px solid transparent;
+  border-radius: 54px;
+  background: rgb(13 22 50 / 20%);
+  background-clip: padding-box;
+  backdrop-filter: blur(1.5px);
+  box-shadow: 0 4px 62px 19px rgb(0 0 0 / 25%);
+  font-family: var(--font-display);
+}
+.auth-panel::before,
+.auth-panel::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 4px solid transparent;
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 200ms ease-in-out;
+}
+.auth-panel::before {
+  background: linear-gradient(0deg, rgb(45 53 79 / 87%), rgb(125 139 173 / 87%)) border-box;
+}
+.auth-panel::after {
+  background: linear-gradient(0deg, rgb(45 53 79 / 87%), rgb(201 162 75 / 87%)) border-box;
+  opacity: 0;
+}
+.auth-panel:hover::before { opacity: 0; }
+.auth-panel:hover::after { opacity: 1; }
+.coup-emblem { position: absolute; }
+.auth-panel h1 {
+  position: absolute;
+  margin: 0;
+  white-space: nowrap;
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 69px;
+  letter-spacing: 0;
+}
+.credential-field {
+  position: absolute;
+  width: 400px;
+  height: 60px;
+  border: 3px solid #242c48;
+  border-radius: 25px;
+  background: var(--color-coup-navy);
+  color: var(--color-coup-icon);
+  cursor: text;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.credential-field:focus-within {
+  border-color: var(--color-coup-gold);
+  box-shadow: 0 0 0 1px rgb(201 161 72 / 14%), 0 0 14px rgb(201 161 72 / 10%);
+}
+.credential-field:focus-within > .field-icon { color: var(--color-coup-gold); }
+.credential-field.has-warning { border-color: var(--color-coup-gold); }
+.field-icon { position: absolute; left: 12px; top: 13px; width: 27px; height: 27px; pointer-events: none; }
+.credential-field input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 22px;
+  padding: 0 46px;
+  background: transparent;
+  color: var(--color-coup-cream);
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 21px;
+  line-height: 26px;
+  caret-color: var(--color-coup-gold);
+  cursor: text;
+}
+.credential-field input::placeholder { color: var(--color-coup-cream); opacity: 1; }
+.credential-field input:focus::placeholder { opacity: 0; }
+.credential-field input:not(:placeholder-shown) { font-family: "42dot Sans", sans-serif; font-size: 23px; }
+/* Edge supplies an extra eye; password fields already have their own visibility button. */
+.credential-field input::-ms-reveal { display: none; }
+.credential-field input:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-coup-cream);
+  box-shadow: 0 0 0 1000px var(--color-coup-navy) inset;
+  caret-color: var(--color-coup-gold);
+}
+.password-toggle {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 8px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--color-coup-icon);
+  cursor: pointer;
+}
+.password-toggle svg { width: 28px; height: 28px; stroke-width: 2.4; }
+.password-toggle:hover { color: var(--color-coup-cream); }
+.password-toggle:focus-visible { outline: 2px solid var(--color-coup-gold); outline-offset: 0; }
+.field-warning { position: absolute; top: 65px; left: 15px; display: flex; align-items: center; gap: 5px; width: 365px; color: #d6a943; font: 600 22px/26px "Abhaya Libre", Georgia, serif; }
+.field-warning svg { flex: 0 0 20px; width: 20px; height: 20px; }
+.text-link { text-decoration: none; text-underline-offset: 4px; }
+.text-link:hover { color: #e9c577; text-decoration: underline; }
+.text-link:focus-visible { outline: 2px solid var(--color-coup-gold); outline-offset: 4px; border-radius: 3px; }
+.auth-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 400px;
+  height: 60px;
+  padding: 0 20px 4px;
+  border: 2.5px solid var(--color-coup-gold);
+  border-radius: 24px;
+  background: transparent;
+  color: var(--color-coup-gold);
+  font-family: var(--font-display);
+  font-size: 33px;
+  font-weight: 700;
+  line-height: 43px;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgb(201 161 72 / 9%);
+  transition: box-shadow 320ms ease, transform 100ms ease;
+}
+.auth-button:hover { box-shadow: 0 0 18px rgb(201 161 72 / 45%), inset 0 0 8px rgb(201 161 72 / 25%); }
+/* Figma "Pressed" button state: gold fill, navy text, and a stronger glow. */
+.auth-button:active {
+  transform: translateY(1px);
+  background: linear-gradient(90deg, #997b37 1%, #c9a24b 50%, #997b37 100%);
+  color: var(--color-coup-navy);
+  box-shadow: 0 4px 40px 2px rgb(201 161 72 / 56%);
+}
+.auth-button:focus-visible { outline: 2px solid var(--color-coup-cream); outline-offset: 5px; }

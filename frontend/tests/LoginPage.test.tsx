@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { LoginPage } from "../src/pages/LoginPage";
 
-afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
+afterEach(() => { cleanup(); vi.unstubAllGlobals(); window.history.replaceState(null, "", "/"); });
 
 function fillCredentials() {
   fireEvent.change(screen.getByLabelText("Email address"), { target: { value: "player@example.com" } });
@@ -70,7 +70,7 @@ describe("desktop login", () => {
     expect(form.noValidate).toBe(true);
     expect(fetch).not.toHaveBeenCalled();
     expect(button.disabled).toBe(false);
-    expect(button.className).toBe("sign-in-button");
+    expect(button.className).toBe("auth-button");
     expect(emailInput.value).toBe(emailBeforeSubmit);
     expect(passwordInput.value).toBe(password);
     expect(emailInput.getAttribute("aria-invalid")).toBe(emailWarning ? "true" : null);
@@ -101,11 +101,11 @@ describe("desktop login", () => {
     expect(screen.queryAllByRole("alert")).toHaveLength(0);
   });
 
-  it("explains the screens outside the login-only scope", () => {
+  it("explains password recovery and opens the register screen from Sign up", () => {
     render(<LoginPage />);
     fireEvent.click(screen.getByRole("link", { name: "Forgot your password?" }));
     expect(screen.getByText("Password recovery is not available yet.")).toBeTruthy();
     fireEvent.click(screen.getByRole("link", { name: "Sign up" }));
-    expect(screen.getByText("Registration is not available yet.")).toBeTruthy();
+    expect(window.location.pathname).toBe("/register");
   });
 });
