@@ -10,7 +10,8 @@
   "minLength": 3,
   "maxLength": 20,
   "lengthUnit": "Unicode code points after NFC normalization",
-  "pattern": "^[A-Za-z][A-Za-z0-9_]*$",
+  "allowedPattern": "^[A-Za-z0-9_]+$",
+  "startPattern": "^[A-Za-z]",
   "reserved": ["admin", "administrator", "moderator", "mod", "support", "system", "staff", "official", "coup", "root"],
   "uniqueness": "Backend only: two names are the same when their lowercase forms are equal.",
   "checks": [
@@ -31,13 +32,18 @@
     },
     {
       "id": "characters",
-      "rule": "Fails when the normalized name does not match pattern: English letters, numbers, and _ only, starting with a letter.",
-      "message": "Use only English letters, numbers, and _. Start with a letter."
+      "rule": "Fails when the normalized name does not match allowedPattern: English letters, numbers, and _ only.",
+      "message": "Use only letters A–Z, numbers, and _."
+    },
+    {
+      "id": "start",
+      "rule": "Fails when the normalized name does not match startPattern: the first character must be a letter.",
+      "message": "Start your name with a letter."
     },
     {
       "id": "reserved",
       "rule": "Fails when the lowercase name equals a reserved word.",
-      "message": "This name is reserved. Choose another one."
+      "message": "This name is reserved."
     }
   ],
   "result": "Run the checks in order and stop at the first failure. The result is accepted with no reason, or not accepted with the id of the failed check."

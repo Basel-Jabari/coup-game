@@ -9,7 +9,8 @@ The rules are in [name-policy.json](name-policy.json). Both sides read that file
 | Rule | Value |
 | --- | --- |
 | Length | 3 to 20 characters |
-| Characters | English letters, numbers, and `_` only. The first character is a letter. |
+| Characters | English letters (A–Z), numbers, and `_` only |
+| First character | A letter |
 | Spaces | Not allowed anywhere, including at the start or end |
 | Reserved names | `admin`, `administrator`, `moderator`, `mod`, `support`, `system`, `staff`, `official`, `coup`, `root` (any capital letters) |
 | Uniqueness | Backend only. `Card_Shark` and `card_shark` count as the same name. |
