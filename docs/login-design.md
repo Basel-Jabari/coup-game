@@ -23,9 +23,9 @@ Colors used in several places are tokens in `frontend/src/styles/index.css`.
 
 The cards (instance 120:4380, 715 x 447 at x 673, y 245), coins, and emblem are SVG exports in `frontend/public/assets/`. The four fonts are bundled locally with Fontsource.
 
-- The background uses the original Figma coin composition and scales it to cover the visible viewport, cropping at the edges as needed. Each coin gently bobs, sways, and tilts independently at a slightly different speed and direction.
+- The Figma export left out details from five background coins. They reuse complete coin artwork with only rotation and movement, so size, color, and stroke stay the same. All 16 coins are complete.
 - The card glow uses a soft SVG shadow, because Figma's outer filter made rectangle artifacts. The filter areas leave room so the blur is never cut off.
-- The 1440 x 922 scene scales as one piece to fit the window, with a 1024 px minimum width. The coin composition covers the visible viewport at its aspect ratio, without a fixed-frame gap. The form and card layout remain unchanged. Reduced-motion settings disable animation. There is no mobile layout.
+- The 1440 x 922 scene scales as one piece to fit the window, with a 1024 px minimum width. The background fills wide screens. Coins may be cut by the window edge, as in Figma. There is no mobile layout.
 
 ## Interactions
 

@@ -68,7 +68,7 @@ export function LoginPage() {
   return (
     <main className="login-screen min-h-dvh" aria-label="Coup sign in">
       <div className="login-scene" style={{ transform: `translate(-50%, -50%) scale(${scale})` }}>
-        <CoinBackground sceneScale={scale} />
+        <CoinBackground />
         <CardArtwork />
         <section className={panelClass} aria-labelledby="login-heading">
           <img className="coup-emblem select-none" src="/assets/coup-emblem.svg" alt="" draggable="false" />

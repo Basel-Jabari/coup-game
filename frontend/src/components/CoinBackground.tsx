@@ -1,14 +1,7 @@
 import { useId } from "react";
 
-const FRAME_WIDTH = 1440;
-const FRAME_HEIGHT = 922;
-const MIN_WIDTH = 1024;
-
-export function CoinBackground({ sceneScale }: { sceneScale: number }) {
+export function CoinBackground() {
   const gradient = useId();
-  const visibleWidth = Math.max(window.innerWidth, MIN_WIDTH) / sceneScale;
-  const visibleHeight = window.innerHeight / sceneScale;
-
   return (
     <svg className="scene-background" viewBox="0 0 1440 922" fill="none" aria-hidden="true" focusable="false">
       <defs>
@@ -18,16 +11,7 @@ export function CoinBackground({ sceneScale }: { sceneScale: number }) {
         </linearGradient>
       </defs>
       <rect x="-5000" y="-5000" width="11440" height="10922" fill={"url(#" + gradient + ")"} />
-      <svg
-        x={(FRAME_WIDTH - visibleWidth) / 2}
-        y={(FRAME_HEIGHT - visibleHeight) / 2}
-        width={visibleWidth}
-        height={visibleHeight}
-        viewBox={`0 0 ${FRAME_WIDTH} ${FRAME_HEIGHT}`}
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <use href="/assets/coin-pattern.svg#coup-coins" />
-      </svg>
+      <use href="/assets/coin-pattern.svg#coup-coins" />
     </svg>
   );
 }
