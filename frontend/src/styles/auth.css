@@ -1,4 +1,4 @@
-/* Shared by the login and register screens. Each screen file sets its scene height and the positions. */
+/* Shared by the login and register screens. Both use the 1440 x 922 scene; each screen file sets the positions. */
 .auth-screen {
   position: relative;
   min-width: 1024px;
@@ -11,6 +11,7 @@
   top: 50%;
   left: 50%;
   width: 1440px;
+  height: 922px;
   transform-origin: center;
 }
 .scene-background { position: absolute; inset: 0; width: 1440px; height: 922px; overflow: visible; pointer-events: none; }

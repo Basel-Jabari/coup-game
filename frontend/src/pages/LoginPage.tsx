@@ -51,7 +51,7 @@ export function LoginPage() {
     .join(" ");
 
   return (
-    <DesktopScene frameHeight={922} label="Coup sign in" sceneClass="login-scene">
+    <DesktopScene label="Coup sign in" sceneClass="login-scene">
       <CoinBackground />
       <CardArtwork />
       <section className={panelClass} aria-labelledby="login-heading">

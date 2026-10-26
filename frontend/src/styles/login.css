@@ -1,5 +1,4 @@
 /* Login positions in the 1440 x 922 Figma frame. Shared looks are in auth.css. */
-.login-scene { height: 922px; }
 .login-scene .card-artwork { left: 591px; top: 140px; }
 .login-panel {
   --email-warning-space: 0px;

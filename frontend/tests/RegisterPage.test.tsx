@@ -60,8 +60,8 @@ describe("register screen", () => {
       "Passwords don't match.",
     ]));
     expect(screen.queryByText("At least 15 characters")).toBeNull();
-    // Like the login, every warning adds room, including the password warning.
-    expect(document.querySelector(".register-panel")!.className).toBe("auth-panel register-panel has-name-warning has-email-warning has-password-warning has-confirm-warning");
+    // Like the login, warnings add room. The password warning uses the hint's row, so it adds none.
+    expect(document.querySelector(".register-panel")!.className).toBe("auth-panel register-panel has-name-warning has-email-warning has-confirm-warning");
   });
 
   it("accepts a valid form without a request and keeps the values", async () => {

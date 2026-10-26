@@ -68,12 +68,13 @@ export function RegisterPage() {
     ? checkPassword(values.password, { username: values.name, email: values.email }, engine).level
     : undefined;
   const showHint = !warnings.password && [...values.password.normalize("NFC")].length < passwordPolicy.minLength;
-  const panelClass = ["auth-panel register-panel", warnings.name && "has-name-warning", warnings.email && "has-email-warning", warnings.password && "has-password-warning", warnings.confirm && "has-confirm-warning"]
+  // The password warning uses the hint's row, so only these three warnings add space to the panel.
+  const panelClass = ["auth-panel register-panel", warnings.name && "has-name-warning", warnings.email && "has-email-warning", warnings.confirm && "has-confirm-warning"]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <DesktopScene frameHeight={1024} label="Coup create account" sceneClass="register-scene">
+    <DesktopScene label="Coup create account" sceneClass="register-scene">
       <CoinBackground />
       <CardArtwork />
       <section className={panelClass} aria-labelledby="register-heading">
