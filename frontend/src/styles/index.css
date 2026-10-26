@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@import "./base.css";
+@import "./login.css";
+
+@theme {
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Roboto", Arial, sans-serif;
+  --color-coup-gold: #c9a148;
+  --color-coup-ink: #080f27;
+  --color-coup-navy: #0d1632;
+  --color-coup-cream: #f3f0e8;
+  --color-coup-muted: #a5aec3;
+  --color-coup-icon: #aab4d0;
+}

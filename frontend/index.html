@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080f27" />
+    <meta name="description" content="Sign in to the Coup multiplayer card-game platform." />
+    <link rel="icon" type="image/svg+xml" href="/assets/coup-emblem.svg" />
+    <title>Sign in · Coup</title>
+    <style>
+      #preview-launch-help:not([hidden]) {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        gap: 18px;
+        padding: 40px;
+        background: #080f27;
+        color: #f3f0e8;
+        text-align: center;
+        font: 18px/1.6 Arial, sans-serif;
+      }
+      #preview-launch-help h1 { margin: 0; color: #c9a148; font-size: 32px; }
+      #preview-launch-help p { max-width: 620px; margin: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <main id="preview-launch-help" hidden>
+        <h1>Start the Coup preview</h1>
+        <p>To view the login screen, double-click <strong>Start-Login.cmd</strong> inside the <strong>coup-game</strong> folder.</p>
+        <p>Keep its window open. It will open the login page in your browser.</p>
+        <p>Opening this HTML file directly does not start the preview.</p>
+      </main>
+    </div>
+    <script>
+      if (window.location.protocol === "file:") {
+        document.getElementById("preview-launch-help").hidden = false;
+      }
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
