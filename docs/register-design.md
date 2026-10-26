@@ -24,7 +24,7 @@ Shared looks live in `frontend/src/styles/auth.css`; register positions live in 
 - **Four strength levels.** Figma shows Weak (1 red bar), Fair (2 yellow bars), and Strong (4 green bars). The screen adds Good (3 bars) in the old green and shows Strong (4 bars) in light purple #B388FF, the "legendary" color. The password border takes the level color while the player types.
 - **Yellow warnings with login spacing.** Figma uses red messages that sit in the gaps. The screen uses the login's yellow warning style instead, and each warning pushes the fields below it down by 32 px, so the two screens behave the same. A password warning sits 8 px below the strength bars, in place of the hint, and a warned password field gets the yellow border like the other fields.
 - **Login coins and cards.** The new Figma frame has a different coin background. The user asked to reuse the login's coins and cards.
-- **Password tips.** Figma has the "?" icon but no tips box. Hovering or focusing it shows short tips in a small gold-bordered box. The box stays open while the pointer is on the button or the box, and Escape closes it.
+- **Password tips.** Figma has the "?" icon but no tips box. Hovering or focusing it shows short tips in a small gold-bordered box: the length, the four character types (capital, small letter, number, symbol), and no common or personal password. The box stays open while the pointer is on the button or the box, and Escape closes it.
 - **Small consistency fixes.** The Name hint gets a space ("Name. Visible to other players."), input text is centered like the login, and the Sign up button uses the login's button style, including the Figma pressed state.
 
 ## Behavior
@@ -36,7 +36,7 @@ Shared looks live in `frontend/src/styles/auth.css`; register positions live in 
 | --- | --- |
 | Name | The [name rules](../integration/contracts/name-policy.md), for example "Do not use spaces in your name." |
 | Email | "Enter your email address." or "Enter a valid email address." |
-| Password | "Enter a password." or a password rule, for example "This password is too common." |
+| Password | "Enter a password." or a password rule, for example "Add a symbol, like ! or #." or "This password is too common." |
 | Confirm password | "Confirm your password." or "Passwords don't match." |
 
 - Editing a field clears only its warning. Valid fields send no request and keep their values. If a field changes while the strength checker is still loading, that check result is dropped, so no old warning appears.

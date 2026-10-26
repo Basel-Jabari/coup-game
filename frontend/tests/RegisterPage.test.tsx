@@ -25,9 +25,9 @@ describe("register screen", () => {
 
   it.each([
     ["short pass", "Weak"],
-    ["football20262026", "Fair"],
-    ["sunshine summer1", "Good"],
-    ["correct horse battery staple", "Strong"],
+    ["Summer2026!2026!", "Fair"],
+    ["Football20262026!", "Good"],
+    ["Violet piano 47!", "Strong"],
   ])("rates %s as %s while typing", async (password, level) => {
     render(<RegisterPage />);
     type("Password", password);
@@ -50,13 +50,13 @@ describe("register screen", () => {
     render(<RegisterPage />);
     type("Name", "Card Shark");
     type("Email address", "card@example");
-    type("Password", "welcome to coup!");
-    type("Confirm password", "welcome to coup");
+    type("Password", "violet piano 47!");
+    type("Confirm password", "violet piano 47");
     submit();
     await waitFor(() => expect(alerts()).toEqual([
       "Do not use spaces in your name.",
       "Enter a valid email address.",
-      'Remove your name, email, or "Coup".',
+      "Add a capital letter (A–Z).",
       "Passwords don't match.",
     ]));
     expect(screen.queryByText("At least 15 characters")).toBeNull();
@@ -70,15 +70,15 @@ describe("register screen", () => {
     render(<RegisterPage />);
     type("Name", "Card_Shark");
     type("Email address", "card@example.com");
-    type("Password", "correct horse battery staple");
-    type("Confirm password", "correct horse battery staple");
+    type("Password", "Violet piano 47!");
+    type("Confirm password", "Violet piano 47!");
     submit();
     await waitFor(() => expect(strength()).toBe("Password strength: Strong"));
     await new Promise(resolve => setTimeout(resolve, 0));
     expect(alerts()).toEqual([]);
     expect(fetch).not.toHaveBeenCalled();
     expect(field("Name").value).toBe("Card_Shark");
-    expect(field("Confirm password").value).toBe("correct horse battery staple");
+    expect(field("Confirm password").value).toBe("Violet piano 47!");
   });
 
   it("clears only the edited field's warning", async () => {
@@ -102,7 +102,10 @@ describe("register screen", () => {
     render(<RegisterPage />);
     const help = screen.getByRole("button", { name: "Password tips" });
     expect(help.getAttribute("aria-describedby")).toBe("password-tips");
-    expect(screen.getByRole("tooltip", { hidden: true }).textContent).toContain("Use at least 15 characters.");
+    const tips = screen.getByRole("tooltip", { hidden: true }).textContent;
+    expect(tips).toContain("Use at least 15 characters.");
+    expect(tips).toContain("Add a capital letter, a small letter, a number, and a symbol");
+    expect(tips).not.toContain("Coup");
   });
 
   it("keeps the tips open while hovered and closes them with Escape", () => {

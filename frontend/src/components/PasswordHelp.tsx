@@ -42,10 +42,9 @@ export function PasswordHelp({ minLength }: { minLength: number }) {
         <strong>Password tips</strong>
         <ul>
           <li>Use at least {minLength} characters.</li>
-          <li>Letters, numbers, symbols, and spaces are all fine.</li>
+          <li>Add a capital letter, a small letter, a number, and a symbol, like ! or #.</li>
           <li>Do not use a common password.</li>
-          <li>Do not use your name, your email, or "Coup".</li>
-          <li>Four or more random words work well.</li>
+          <li>Do not use your name or email.</li>
         </ul>
       </div>
     </div>
