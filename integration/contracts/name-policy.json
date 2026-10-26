@@ -1,0 +1,44 @@
+{
+  "status": "proposal",
+  "version": 1,
+  "field": "Name: the display name that other players see everywhere",
+  "basis": [
+    "OWASP Input Validation Cheat Sheet: accept only an allowlist and apply one normalization rule",
+    "RFC 8265 (PRECIS usernames): no spaces inside an identifier; compare names without case"
+  ],
+  "normalize": "NFC",
+  "minLength": 3,
+  "maxLength": 20,
+  "lengthUnit": "Unicode code points after NFC normalization",
+  "pattern": "^[A-Za-z][A-Za-z0-9_]*$",
+  "reserved": ["admin", "administrator", "moderator", "mod", "support", "system", "staff", "official", "coup", "root"],
+  "uniqueness": "Backend only: two names are the same when their lowercase forms are equal.",
+  "checks": [
+    {
+      "id": "required",
+      "rule": "Fails when the name is empty.",
+      "message": "Enter a name."
+    },
+    {
+      "id": "spaces",
+      "rule": "Fails when the name contains any whitespace character, including at the start or end.",
+      "message": "Do not use spaces in your name."
+    },
+    {
+      "id": "length",
+      "rule": "Fails when the normalized name has fewer than minLength or more than maxLength characters.",
+      "message": "Use 3 to 20 characters."
+    },
+    {
+      "id": "characters",
+      "rule": "Fails when the normalized name does not match pattern: English letters, numbers, and _ only, starting with a letter.",
+      "message": "Use only English letters, numbers, and _. Start with a letter."
+    },
+    {
+      "id": "reserved",
+      "rule": "Fails when the lowercase name equals a reserved word.",
+      "message": "This name is reserved. Choose another one."
+    }
+  ],
+  "result": "Run the checks in order and stop at the first failure. The result is accepted with no reason, or not accepted with the id of the failed check."
+}

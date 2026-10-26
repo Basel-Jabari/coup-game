@@ -16,6 +16,7 @@ Open this repository's `coup-game` folder in the coding tool. In a plain ChatGPT
 | `coup-backend-data` | Queries, transactions, models, and migrations. |
 | `coup-frontend-feature` | Frontend file placement, design matching, and frontend checks. |
 | `coup-ai-review` | A read-only review by the other AI tool. |
+| `coup-security-docs` | Security documents, their PDFs and references, and shared security rules. |
 | `coup-pull-request` | Numbered PR titles, clear descriptions, checks, and docs. |
 
 Codex entry files are under `.agents/skills/<name>/SKILL.md`. Claude Code entry files are under `.claude/skills/<name>/SKILL.md`. Each pair has the same small entry file and links to one shared guide. Resolve its relative links from the entry file's folder.

@@ -3,3 +3,4 @@
 *.png -text
 *.woff -text
 *.woff2 -text
+*.pdf -text

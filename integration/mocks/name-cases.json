@@ -1,0 +1,21 @@
+{
+  "about": "Shared test names for integration/contracts/name-policy.json. Frontend and backend tests must give these exact results.",
+  "cases": [
+    { "name": "Empty", "value": "", "expected": { "accepted": false, "reason": "required" } },
+    { "name": "Space inside", "value": "Card Shark", "expected": { "accepted": false, "reason": "spaces" } },
+    { "name": "Space at the end", "value": "CardShark ", "expected": { "accepted": false, "reason": "spaces" } },
+    { "name": "Only spaces", "value": "   ", "expected": { "accepted": false, "reason": "spaces" } },
+    { "name": "Too short", "value": "ab", "expected": { "accepted": false, "reason": "length" } },
+    { "name": "Too long", "value": "TheVeryLongPlayerName", "expected": { "accepted": false, "reason": "length" } },
+    { "name": "Starts with a number", "value": "1Player", "expected": { "accepted": false, "reason": "characters" } },
+    { "name": "Hyphen", "value": "card-shark", "expected": { "accepted": false, "reason": "characters" } },
+    { "name": "Accented letter", "value": "Nöor", "expected": { "accepted": false, "reason": "characters" } },
+    { "name": "Arabic letters", "value": "نورالهدى", "expected": { "accepted": false, "reason": "characters" } },
+    { "name": "Reserved word", "value": "Admin", "expected": { "accepted": false, "reason": "reserved" } },
+    { "name": "Reserved game name", "value": "COUP", "expected": { "accepted": false, "reason": "reserved" } },
+    { "name": "Reserved word inside a longer name", "value": "AdminFan", "expected": { "accepted": true, "reason": null } },
+    { "name": "Exactly 3 characters", "value": "Ace", "expected": { "accepted": true, "reason": null } },
+    { "name": "Exactly 20 characters", "value": "TheGreatestDukeEver2", "expected": { "accepted": true, "reason": null } },
+    { "name": "Letters, numbers, and underscore", "value": "Card_Shark_99", "expected": { "accepted": true, "reason": null } }
+  ]
+}
