@@ -8,7 +8,7 @@ Source: [Figma design](https://www.figma.com/design/gSwvUJYZiyFV5LTaTRcQvW/ui-lo
 
 ## Design values
 
-- Panel: x 847, y 162, 500 x 700, the same border, blur, shadow, and hover gradient as the login panel.
+- Panel: x 847, y 162, 500 x 700, the same border, blur, shadow, and hover as the login panel, including the smooth border change and the emblem glow (see the [login note](login-design.md)).
 - Emblem: 92 px at x 1051, y 177. Title "Create Account": Playfair Display Regular, 52 px, at x 912, y 259.
 - Fields, each 400 x 60 at x 899: Name y 345, Email y 427, Password y 518, Confirm password y 634. The Name field uses the Figma person icon.
 - Strength bars: four 79 x 4 px bars at y 592; empty bars #313A57. Label at the right end. Hint: Roboto 20 px, #7D8BAD, at y 602.

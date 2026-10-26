@@ -46,28 +46,37 @@
   box-shadow: 0 4px 62px 19px rgb(0 0 0 / 25%);
   font-family: var(--font-display);
 }
-.auth-panel::before,
-.auth-panel::after {
+/* On hover, the top of the border turns from blue-gray to gold. One layer with a moving color keeps the change
+   smooth; a cross-fade of two see-through layers made the border dim halfway. */
+@property --panel-edge {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgb(125 139 173 / 87%);
+}
+.auth-panel::before {
   content: "";
   position: absolute;
   inset: -4px;
   border: 4px solid transparent;
   border-radius: inherit;
+  background: linear-gradient(0deg, rgb(45 53 79 / 87%), var(--panel-edge)) border-box;
   mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   pointer-events: none;
-  transition: opacity 200ms ease-in-out;
+  transition: --panel-edge 300ms ease-out;
 }
-.auth-panel::before {
-  background: linear-gradient(0deg, rgb(45 53 79 / 87%), rgb(125 139 173 / 87%)) border-box;
+.auth-panel:hover::before { --panel-edge: rgb(201 162 75 / 87%); }
+/* On panel hover, the emblem gets a gold edge and a soft halo, like the middle card, in the same 300 ms. */
+.coup-emblem {
+  position: absolute;
+  filter: brightness(1) drop-shadow(0 0 2px rgb(246 205 107 / 0%)) drop-shadow(0 0 5px rgb(246 205 107 / 0%))
+    drop-shadow(0 0 14px rgb(201 155 52 / 0%));
+  transition: filter 300ms ease-out;
 }
-.auth-panel::after {
-  background: linear-gradient(0deg, rgb(45 53 79 / 87%), rgb(201 162 75 / 87%)) border-box;
-  opacity: 0;
+.auth-panel:hover .coup-emblem {
+  filter: brightness(1.1) drop-shadow(0 0 2px rgb(246 205 107 / 75%)) drop-shadow(0 0 5px rgb(246 205 107 / 40%))
+    drop-shadow(0 0 14px rgb(201 155 52 / 70%));
 }
-.auth-panel:hover::before { opacity: 0; }
-.auth-panel:hover::after { opacity: 1; }
-.coup-emblem { position: absolute; }
 .auth-panel h1 {
   position: absolute;
   margin: 0;
