@@ -40,7 +40,7 @@ Keep tests in their assigned folders. Do not add a root `tests/` folder. Keep th
 
 ## Branch names
 
-Name branches after the task, such as `register-screen`, `security-rules`, or `fix-password-toggle`. Use lowercase words separated by hyphens. Do not include AI tool names or prefixes such as `codex/` or `claude/`.
+Name every new branch after the task, such as `register-screen`, `security-rules`, or `fix-password-toggle`. Use lowercase words separated by hyphens. Never include an AI name anywhere in a branch name, including prefixes such as `codex/` or `claude/`. This rule applies to all tools and overrides their default branch prefixes.
 
 ## Pull requests
 
