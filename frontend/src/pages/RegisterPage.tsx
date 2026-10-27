@@ -83,9 +83,11 @@ export function RegisterPage() {
         <form onSubmit={submit} noValidate aria-label="Create account">
           <CredentialField
             id="register-name" name="name" autoComplete="nickname" autoCapitalize="none" spellCheck={false}
-            placeholder="Name. Visible to other players." label="Name" icon="user" warning={warnings.name}
+            placeholder=" " label="Name" icon="user" warning={warnings.name}
             value={values.name} onChange={event => change("name", event.target.value)}
-          />
+          >
+            {!values.name && <span className="name-placeholder" aria-hidden="true"><span>Name.</span><span> Visible to other players.</span></span>}
+          </CredentialField>
           <CredentialField
             id="register-email" name="email" type="email" autoComplete="email" autoCapitalize="none" spellCheck={false}
             placeholder="Email Address" label="Email address" icon="mail" warning={warnings.email}
@@ -113,7 +115,7 @@ export function RegisterPage() {
           </div>
           <CredentialField
             id="register-confirm" name="confirm" type={visible.confirm ? "text" : "password"} autoComplete="new-password"
-            placeholder="Confirm password" label="Confirm password" icon="lock" warning={warnings.confirm}
+            placeholder="Confirm Password" label="Confirm password" icon="lock" warning={warnings.confirm}
             value={values.confirm} onChange={event => change("confirm", event.target.value)}
           >
             <PasswordToggle visible={visible.confirm} subject="confirm password" onToggle={() => setVisible(current => ({ ...current, confirm: !current.confirm }))} />

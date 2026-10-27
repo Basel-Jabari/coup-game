@@ -5,8 +5,20 @@ const navigateEvent = "coup:navigate";
 
 export function navigate(path: string) {
   if (path === window.location.pathname) return;
-  window.history.pushState(null, "", path);
-  window.dispatchEvent(new Event(navigateEvent));
+  const update = () => {
+    window.history.pushState(null, "", path);
+    window.dispatchEvent(new Event(navigateEvent));
+  };
+  const transitionDocument = document as Document & {
+    startViewTransition?: (callback: () => void) => unknown;
+  };
+
+  if (!transitionDocument.startViewTransition || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    update();
+    return;
+  }
+
+  transitionDocument.startViewTransition(update);
 }
 
 export function onNavigate(listener: () => void) {

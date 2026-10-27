@@ -30,7 +30,7 @@ export function PasswordHelp({ minLength }: { minLength: number }) {
   }
 
   return (
-    <div onMouseEnter={enter} onMouseLeave={leave}>
+    <div className="password-help-group" onMouseEnter={enter} onMouseLeave={leave}>
       <button
         className="password-help" type="button" aria-label="Password tips" aria-describedby="password-tips"
         onFocus={() => { setFocused(true); setDismissed(false); }} onBlur={() => setFocused(false)}
@@ -39,7 +39,7 @@ export function PasswordHelp({ minLength }: { minLength: number }) {
         <span aria-hidden="true">?</span>
       </button>
       <div className={"password-tips" + (open ? " open" : "")} id="password-tips" role="tooltip">
-        <strong>Password tips</strong>
+        <strong>Password Tips</strong>
         <ul>
           <li>Use at least {minLength} characters.</li>
           <li>Add a capital letter, a small letter, a number, and a symbol, like ! or #.</li>

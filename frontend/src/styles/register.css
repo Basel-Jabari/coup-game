@@ -26,6 +26,21 @@
 .register-panel h1 { left: 61px; top: 93px; }
 .register-panel .credential-field { left: 48px; }
 .register-panel .name-field { top: 179px; }
+.register-panel .name-field input::placeholder { color: var(--color-coup-cream); }
+.name-placeholder {
+  position: absolute;
+  left: 46px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: var(--color-coup-cream);
+  font: 21px/26px var(--font-body);
+  pointer-events: none;
+  white-space: pre;
+}
+.name-placeholder span + span { color: #677296; }
+.name-field:focus-within .name-placeholder { display: none; }
 .register-panel .email-field { top: calc(268px + var(--name-warning-space)); }
 .register-panel .password-field { top: calc(357px + var(--password-shift)); }
 .register-panel .confirm-field { top: calc(496px + var(--password-shift)); }
@@ -52,7 +67,7 @@
 .password-level {
   position: absolute;
   left: 430px;
-  top: calc(419px + var(--password-shift));
+  top: calc(416px + var(--password-shift));
   margin: 0;
   color: #fff;
   font: 24px/normal var(--font-body);
@@ -72,11 +87,17 @@
   font: 20px/normal var(--font-body);
 }
 
-/* The "?" button opens short password tips on hover or focus. The tips box is not in Figma. */
-.password-help {
+/* The tips bubble is positioned from the help icon so its pointer always leads back to the question mark. */
+.password-help-group {
   position: absolute;
+  z-index: 3;
   left: 456px;
   top: calc(378px + var(--password-shift));
+  width: 25px;
+  height: 25px;
+}
+.password-help {
+  position: relative;
   width: 25px;
   height: 25px;
   padding: 0;
@@ -87,30 +108,55 @@
   cursor: help;
 }
 .password-help img { position: absolute; left: -6px; top: -6px; width: 37px; max-width: none; height: 37px; pointer-events: none; }
-.password-help span { position: absolute; left: 7px; top: 0; font: 700 22px/normal "Inria Serif", Georgia, serif; letter-spacing: .44px; }
+.password-help span { position: absolute; left: 7px; top: -3px; font: 700 22px/normal "Inria Serif", Georgia, serif; letter-spacing: .44px; text-shadow: 0 0 5px rgb(201 155 52 / 65%); }
 .password-help:focus-visible { outline: 2px solid var(--color-coup-gold); outline-offset: 4px; }
 .password-tips {
   position: absolute;
   z-index: 2;
-  left: 151px;
-  top: calc(368px + var(--password-shift));
-  width: 330px;
+  right: calc(50% - 24px);
+  bottom: calc(100% + 30px);
+  width: 360px;
   padding: 12px 16px;
   border: 1.5px solid var(--color-coup-gold);
   border-radius: 18px;
-  background: var(--color-coup-navy);
+  background: rgb(13 22 50 / 88%);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   box-shadow: 0 8px 30px rgb(0 0 0 / 45%);
   color: var(--color-coup-cream);
-  font: 16px/22px var(--font-body);
+  font-family: "Abhaya Libre", Georgia, serif;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 24px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-100%);
-  transition: opacity 150ms ease, visibility 150ms ease;
+  transform: translateY(4px);
+  transition: opacity 150ms ease, visibility 150ms ease, transform 150ms ease;
 }
-.password-tips strong { display: block; margin-bottom: 4px; color: var(--color-coup-gold); }
+.password-tips::before,
+.password-tips::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+.password-tips::before {
+  right: 0;
+  bottom: -30px;
+  border-width: 30px 27px 0;
+  border-color: var(--color-coup-gold) transparent transparent;
+}
+.password-tips::after {
+  right: 2px;
+  bottom: -28px;
+  border-width: 28px 25px 0;
+  border-color: rgb(13 22 50 / 88%) transparent transparent;
+}
+.password-tips strong { display: block; margin-bottom: 6px; color: var(--color-coup-gold); font-size: 21px; font-weight: inherit; line-height: 25px; }
 .password-tips ul { margin: 0; padding-left: 18px; list-style: disc; }
 .password-tips li::marker { color: var(--color-coup-gold); }
-.password-tips.open { opacity: 1; visibility: visible; }
+.password-tips.open { opacity: 1; visibility: visible; transform: translateY(0); }
 
 .register-panel .auth-button { left: 47px; top: calc(597px + var(--warning-space)); }
 .signin-prompt {
