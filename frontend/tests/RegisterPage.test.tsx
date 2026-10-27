@@ -17,8 +17,8 @@ describe("register screen", () => {
   it("starts with an empty meter and the 15-character hint", () => {
     render(<RegisterPage />);
     for (const label of ["Name", "Email address", "Password", "Confirm password"]) expect(field(label).value).toBe("");
-    expect(field("Name").placeholder).toBe("Name. Visible to Other Players");
-    expect(document.querySelector(".name-placeholder")!.textContent).toBe("Name. Visible to Other Players");
+    expect(field("Name").placeholder).toBe("Name (Visible to Other Players)");
+    expect(document.querySelector(".name-placeholder")!.textContent).toBe("Name (Visible to Other Players)");
     expect(strength()).toBe("Password strength: -");
     expect(screen.getByText("At least 15 characters")).toBeTruthy();
     expect(field("Password").getAttribute("aria-describedby")).toBe("password-level password-hint");

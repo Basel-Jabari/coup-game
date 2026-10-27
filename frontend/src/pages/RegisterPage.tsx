@@ -83,11 +83,11 @@ export function RegisterPage() {
         <form onSubmit={submit} noValidate aria-label="Create account">
           <CredentialField
             id="register-name" name="name" autoComplete="nickname" autoCapitalize="none" spellCheck={false}
-            placeholder="Name. Visible to Other Players" label="Name" icon="user" warning={warnings.name}
+            placeholder="Name (Visible to Other Players)" label="Name" icon="user" warning={warnings.name}
             value={values.name} onChange={event => change("name", event.target.value)}
           >
             {/* The real placeholder stays for screen readers; this copy shows the two Figma colors. */}
-            {!values.name && <span className="name-placeholder" aria-hidden="true"><span>Name.</span><span> Visible to Other Players</span></span>}
+            {!values.name && <span className="name-placeholder" aria-hidden="true"><span>Name</span><span> (Visible to Other Players)</span></span>}
           </CredentialField>
           <CredentialField
             id="register-email" name="email" type="email" autoComplete="email" autoCapitalize="none" spellCheck={false}
