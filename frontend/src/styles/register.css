@@ -26,7 +26,7 @@
 .register-panel h1 { left: 61px; top: 93px; }
 .register-panel .credential-field { left: 48px; }
 .register-panel .name-field { top: 179px; }
-.register-panel .name-field input::placeholder { color: var(--color-coup-cream); }
+.register-panel .name-field input::placeholder { color: transparent; }
 .name-placeholder {
   position: absolute;
   left: 46px;
@@ -64,16 +64,17 @@
 .level-fair .meter-bar.on { background: var(--level-fair); }
 .level-good .meter-bar.on { background: var(--level-good); }
 .level-strong .meter-bar.on { background: var(--level-strong); }
+/* The empty-state "-" is centered on the bars; the level words keep their Figma line. */
 .password-level {
   position: absolute;
   left: 430px;
-  top: calc(416px + var(--password-shift));
+  top: calc(417.25px + var(--password-shift));
   margin: 0;
   color: #fff;
   font: 24px/normal var(--font-body);
   white-space: nowrap;
 }
-.password-strength[class*="level-"] .password-level { font: 800 23px/normal "Abhaya Libre", Georgia, serif; }
+.password-strength[class*="level-"] .password-level { top: calc(416px + var(--password-shift)); font: 800 23px/normal "Abhaya Libre", Georgia, serif; }
 .level-weak .password-level { left: 424px; color: var(--level-weak); font-size: 24px; }
 .level-fair .password-level { left: 426px; color: var(--level-fair); }
 .level-good .password-level { left: 423px; color: var(--level-good); }
@@ -108,55 +109,37 @@
   cursor: help;
 }
 .password-help img { position: absolute; left: -6px; top: -6px; width: 37px; max-width: none; height: 37px; pointer-events: none; }
-.password-help span { position: absolute; left: 7px; top: -3px; font: 700 22px/normal "Inria Serif", Georgia, serif; letter-spacing: .44px; text-shadow: 0 0 5px rgb(201 155 52 / 65%); }
+.password-help span { position: absolute; left: 7px; top: -1px; font: 700 22px/normal "Inria Serif", Georgia, serif; letter-spacing: .44px; text-shadow: 0 0 5px rgb(201 155 52 / 65%); }
 .password-help:focus-visible { outline: 2px solid var(--color-coup-gold); outline-offset: 4px; }
+/* The Figma "Tips" bubble (226:3071), measured from the 25 px "?" button. The tail tip sits where Figma puts it,
+   at x 7, just above the ring, and the bubble ends 12 px inside the panel border. */
 .password-tips {
   position: absolute;
-  z-index: 2;
-  right: calc(50% - 24px);
-  bottom: calc(100% + 30px);
-  width: 360px;
-  padding: 12px 16px;
-  border: 1.5px solid var(--color-coup-gold);
-  border-radius: 18px;
-  background: rgb(13 22 50 / 88%);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 8px 30px rgb(0 0 0 / 45%);
-  color: var(--color-coup-cream);
-  font-family: "Abhaya Libre", Georgia, serif;
-  font-size: 18px;
-  font-weight: 800;
-  line-height: 24px;
-  opacity: 0;
+  left: -226.5px;
+  top: -129.5px;
+  width: 255px;
+  height: 137.243px;
+  pointer-events: auto;
   visibility: hidden;
   transform: translateY(4px);
-  transition: opacity 150ms ease, visibility 150ms ease, transform 150ms ease;
+  transition: visibility 150ms ease, transform 150ms ease;
 }
-.password-tips::before,
-.password-tips::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-style: solid;
+/* Each layer fades on its own, so the blur behind the bubble works during the fade too. */
+.password-tips > * { position: absolute; opacity: 0; transition: opacity 150ms ease; }
+.password-tips.open { visibility: visible; transform: translateY(0); }
+.password-tips.open > * { opacity: 1; }
+.tips-blur { inset: 0; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.tips-bubble { inset: 0; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 4px 4px rgb(0 0 0 / 25%)); }
+.tips-bubble path { fill: rgb(49 58 87 / 75%); stroke: #c99b34; }
+.tips-text {
+  left: 11.5px;
+  top: 3.5px;
+  width: 232px;
+  color: #fff;
+  font: 800 15px/normal "Abhaya Libre", Georgia, serif;
 }
-.password-tips::before {
-  right: 0;
-  bottom: -30px;
-  border-width: 30px 27px 0;
-  border-color: var(--color-coup-gold) transparent transparent;
-}
-.password-tips::after {
-  right: 2px;
-  bottom: -28px;
-  border-width: 28px 25px 0;
-  border-color: rgb(13 22 50 / 88%) transparent transparent;
-}
-.password-tips strong { display: block; margin-bottom: 6px; color: var(--color-coup-gold); font-size: 21px; font-weight: inherit; line-height: 25px; }
-.password-tips ul { margin: 0; padding-left: 18px; list-style: disc; }
-.password-tips li::marker { color: var(--color-coup-gold); }
-.password-tips.open { opacity: 1; visibility: visible; transform: translateY(0); }
+.tips-text strong { display: block; color: #c99b34; font-weight: inherit; }
+.tips-text ul { margin: 0; padding-left: 18px; list-style: disc; }
 
 .register-panel .auth-button { left: 47px; top: calc(597px + var(--warning-space)); }
 .signin-prompt {

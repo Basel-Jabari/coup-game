@@ -10,9 +10,10 @@ Source: [Figma design](https://www.figma.com/design/gSwvUJYZiyFV5LTaTRcQvW/ui-lo
 
 - Panel: x 847, y 162, 500 x 700, the same border, blur, shadow, and hover as the login panel, including the smooth border change and the emblem glow (see the [login note](login-design.md)).
 - Emblem: 92 px at x 1051, y 177. Title "Create Account": Playfair Display Regular, 52 px, at x 912, y 259.
-- Fields, each 400 x 60 at x 899: Name y 345, Email y 427, Password y 518, Confirm password y 634. The Name field uses the Figma person icon.
-- Strength bars: four 79 x 4 px bars at y 592; empty bars #313A57. Label at the right end. Hint: Roboto 20 px, #7D8BAD, at y 602.
-- "?" help: 25 px at x 1307, y 539, with the Figma gold ring and Inria Serif Bold "?" in #C99B34.
+- Fields, each 400 x 60 at x 899: Name y 345, Email y 427, Password y 518, Confirm Password y 634. The Name field uses the Figma person icon. Its hint has two colors: "Name." in cream and the rest in #677296.
+- Strength bars: four 79 x 4 px bars at y 592; empty bars #313A57. Label at the right end; the empty "-" is centered on the bars. Hint: Roboto 20 px, #7D8BAD, at y 602.
+- "?" help: 25 px at x 1307, y 539, with the Figma gold ring and Inria Serif Bold "?" in #C99B34, centered in the ring.
+- Tips bubble: the Figma "Tips" component (motion page, 226:3067). Abhaya Libre ExtraBold 15 px, a #C99B34 "Password Tips" title, white tips, a #313A57 fill at 75%, a 1 px #C99B34 border, a soft shadow, and a background blur.
 - Sign up button: x 898, y 735, 400 x 60. "Already have an account? Sign in": Playfair Display 22 px with a 24 px #C9A24B link, at x 941, y 809.
 - Cards: the login's five-card artwork at x 47, y 289, with the same hover motion.
 
@@ -26,8 +27,9 @@ These are the Figma frame values. On screen, the panel, cards, and fields move a
 - **Four strength levels.** Figma shows Weak (1 red bar), Fair (2 yellow bars), and Strong (4 green bars). The screen adds Good (3 bars) in the old green and shows Strong (4 bars) in light purple #B388FF, the "legendary" color. The password border takes the level color while the player types.
 - **Yellow warnings with login spacing.** Figma uses red messages that sit in the gaps. The screen uses the login's yellow warning style instead, and the Name, Email, and Confirm warnings each push the fields below them down by 32 px, so the two screens behave the same. The password warning takes the hint's row, 8 px below the strength bars, so it adds no space and the gaps stay equal. A warned password field gets the yellow border like the other fields.
 - **Login coins and cards.** The new Figma frame has a different coin background. The user asked to reuse the login's coins and cards.
-- **Password tips.** Figma has the "?" icon but no tips box. Hovering or focusing it shows short tips in a small gold-bordered box: the length, the four character types (capital, small letter, number, symbol), and no common or personal password. The box stays open while the pointer is on the button or the box, and Escape closes it.
-- **Small consistency fixes.** The Name hint gets a space ("Name. Visible to other players."), input text is centered like the login, and the Sign up button uses the login's button style, including the Figma pressed state.
+- **Tips bubble inside the panel.** Hovering or focusing the "?" opens the Figma tips bubble. In Figma, the bubble reaches 7 px past the panel border, so its tail moves to the bubble's right corner. The tail tip stays where Figma puts it, just above the "?", and the bubble ends 12 px inside the border. The bullet indent is 18 px instead of 22.5 px, so the tips fit the Figma size in 6 lines. The bubble stays open while the pointer is on the button or the bubble, and Escape closes it.
+- **Name hint text.** The user asked for "Name. Visible to Other Players" instead of Figma's "Name.Visible to other players.". Screen readers hear the same text from the field's placeholder.
+- **Small consistency fixes.** Input text is centered like the login, and the Sign up button uses the login's button style, including the Figma pressed state.
 
 ## Behavior
 
@@ -42,7 +44,7 @@ These are the Figma frame values. On screen, the panel, cards, and fields move a
 | Confirm password | "Confirm your password." or "Passwords don't match." |
 
 - Editing a field clears only its warning. Valid fields send no request and keep their values. If a field changes while the strength checker is still loading, that check result is dropped, so no old warning appears.
-- Each password field has its own show/hide button. "Sign in" returns to the login screen, and "Sign up" on the login opens this screen.
+- Each password field has its own show/hide button. "Sign in" returns to the login screen, and "Sign up" on the login opens this screen. In browsers with view transitions, the screens change with a short 220 ms fade; with reduced motion, they change at once.
 
 ## Run and test
 
