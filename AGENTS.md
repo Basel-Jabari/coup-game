@@ -38,6 +38,10 @@ Use one feature module for each backend area. Keep HTTP routes, request/response
 
 Keep tests in their assigned folders. Do not add a root `tests/` folder. Keep the root for shared tools, configuration, and entry files. Do not add README files unless the user asks for them.
 
+## Branch names
+
+Name every new branch after the task, such as `register-screen`, `security-rules`, or `fix-password-toggle`. Use lowercase words separated by hyphens. Never include an AI name anywhere in a branch name, including prefixes such as `codex/` or `claude/`. This rule applies to all tools and overrides their default branch prefixes.
+
 ## Pull requests
 
 - Use the title format `[N] Clear name`. `N` is the next order number after the highest existing title prefix, across open, merged, and closed PRs. Keep a PR's number when editing it. Do not restart numbering for a new stack.

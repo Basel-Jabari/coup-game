@@ -2,7 +2,7 @@
 
 ## Scope
 
-Login screen only, in English, for desktop. It is a frontend preview: it checks the fields locally and never contacts a server. Registration, password recovery, authentication, and the game are not part of it. Backend integration starts only when the user asks for it.
+Login screen, in English, for desktop. It is a frontend preview: it checks the fields locally and never contacts a server. Password recovery, authentication, and the game are not part of it. The register screen has its own [note](register-design.md); both screens share the styles in `frontend/src/styles/auth.css`. Backend integration starts only when the user asks for it.
 
 Source: [Figma design](https://www.figma.com/design/gSwvUJYZiyFV5LTaTRcQvW/ui-login-register?node-id=120-3855), frame "Desktop - login default" (120:3855), 1440 x 922. Design version: 23 October 2026, with Noor's changes. The motion page gave the card poses and the panel hover. Prototype keyboard shortcuts are not app shortcuts.
 
@@ -27,13 +27,14 @@ The cards (instance 120:4380, 715 x 447 at x 673, y 245), coins, and emblem are 
 - The user asked to scatter the three coins on the right side. They were almost in one column, with the same angle and size. Now they form a zig-zag, each with its own angle and size, and keep their color. The top coin is turned 30° at 90% size, the middle coin −15° at 125%, and the bottom coin 55° at 80%. Each coin turns and resizes around its own center. The right side mirrors the left side: the middle-left coin goes 81.75 px past the left edge, so the middle-right coin goes 81.75 px past the right edge. Visible edges, including the line: top x 1283.75 to 1422.25, middle x 1371.25 to 1521.75, bottom x 1359.25 to 1461.
 - The user also asked that three coins on the left side each have a different angle: the coin between the panel and the cards, the coin behind "Sign in", and the small coin at the bottom left. They looked almost the same, because the coin design repeats every 90°. The coin behind "Sign in" is now turned 35° more and the bottom-left coin 25° less, so the three sit about 30° apart (29°, 56°, and 86°). Each one turns around its own center, so its place and size stay the same.
 - The card glow uses a soft SVG shadow, because Figma's outer filter made rectangle artifacts. The filter areas leave room so the blur is never cut off.
-- The 1440 x 922 scene scales as one piece to fit the window, with a 1024 px minimum width. The background fills wide screens. Coins may be cut by the window edge, as in Figma. There is no mobile layout.
+- The 1440 x 922 scene scales as one piece to fit the window, with a 1024 px minimum width. The register screen uses the same scene and scale, so the background and cards keep their size between the two screens. The background fills wide screens. Coins may be cut by the window edge, as in Figma. There is no mobile layout.
 
 ## Interactions
 
 - **Card hover.** When the pointer enters the 890 x 650 card area, the four back cards move behind the middle card in 300 ms with ease-out, as in Figma's tight "Variant3" pose. The moves are about −113, +116, +66, and −89 px (Figma values scaled to the 715 px instance). The middle card gets a warm halo, 12% more brightness, and a soft gold edge at 0.25 opacity. The shared glow fades from 0.8 to 0.3, and the background aura from 0.35 to 0.15. Leaving the area restores everything.
-- **Panel hover.** The border changes to #C9A24B gold at the top and #2D354F dark blue at the bottom in 200 ms, as in Figma (120:1135).
+- **Panel hover.** The border changes to #C9A24B gold at the top and #2D354F dark blue at the bottom, as in Figma (120:1135). At the user's request, the change takes 300 ms with ease-out, like the cards, instead of Figma's 200 ms. Only the top color moves, on one layer, so the border no longer dims halfway as the old cross-fade did. The emblem also gets a gold edge glow and a soft halo, like the middle card, and becomes 10% brighter in the same 300 ms.
 - **Sign-in hover.** The button gets an outer and inner edge glow. Its center stays transparent.
+- **Sign-in pressed.** While the button is held down, it follows the Figma "Pressed" state (Frame 1, node 233:471): a gold gradient fill (#997B37, #C9A24B, #997B37), dark navy text (#0D1632), and a stronger gold glow. The user asked for this state.
 - **Inputs.** Inputs use the normal text cursor and native clicks. Focus turns the border and leading icon gold and hides the hint. Leaving a field keeps its value. The text is vertically centered; the user chose this over Figma's lower text position.
 - **Password eye.** It shows or hides the password. Edge's own extra eye is hidden with `::-ms-reveal`, as [Microsoft documents](https://learn.microsoft.com/en-us/microsoft-edge/web-platform/password-reveal). Autocomplete still works.
 - Reduced-motion settings remove the transitions.
@@ -50,7 +51,7 @@ Sign in and Enter check the fields locally:
 
 Spaces around the email are ignored. The password has no length rule. A warning appears 8 px below its field with the yellow icon, and the field border turns gold. Each warning adds 32 px, so the panel grows to 614 px with both. Editing a field clears only its warning. Submission keeps both values.
 
-Valid fields do nothing yet. There is no request, loading state, red error, or retry delay; only the backend can decide whether an account exists. "Forgot your password?" and "Sign up" show a short "not available yet" notice.
+Valid fields do nothing yet. There is no request, loading state, red error, or retry delay; only the backend can decide whether an account exists. "Forgot your password?" shows a short "not available yet" notice. "Sign up" opens the register screen at `/register`.
 
 ## Run and test
 
@@ -60,4 +61,4 @@ Run `npm test` for the UI tests in `frontend/tests/` and `npm run build` for the
 
 ## Previews
 
-[Default](previews/login-desktop.png), [wide desktop](previews/login-wide.png), [tall desktop](previews/login-tall.png), [card hover](previews/login-hover.png), [panel hover](previews/login-panel-hover.png), [email focus](previews/login-focus.png), [entered text](previews/login-filled.png), and [field warnings](previews/login-validation.png).
+[Default](previews/login-desktop.png), [wide desktop](previews/login-wide.png), [tall desktop](previews/login-tall.png), [card hover](previews/login-hover.png), [panel hover](previews/login-panel-hover.png), [email focus](previews/login-focus.png), [entered text](previews/login-filled.png), [field warnings](previews/login-validation.png), and [pressed button](previews/login-pressed.png).

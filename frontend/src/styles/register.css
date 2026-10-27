@@ -1,0 +1,155 @@
+/* Register positions from the 1440 x 1024 Figma frame "Desktop - Register default" (233:1402), placed in the login's
+   1440 x 922 scene so both screens share one scale. The cards sit at the login's card height, and the panel starts at
+   y 80 so it still fits with all warnings. The field spacing follows the login: 29 px between boxes, and about 30 px
+   from a warning or the hint to the next box. Other sizes follow Figma. Shared looks are in auth.css. */
+.register-scene .card-artwork { left: -35px; top: 140px; }
+.register-panel {
+  /* Each warning adds 32 px and moves everything below it, as on the login screen. The password warning uses
+     the hint's row instead, so it adds no space. */
+  --name-warning-space: 0px;
+  --email-warning-space: 0px;
+  --confirm-warning-space: 0px;
+  --password-shift: calc(var(--name-warning-space) + var(--email-warning-space));
+  --warning-space: calc(var(--password-shift) + var(--confirm-warning-space));
+  --level-weak: #ff383c;
+  --level-fair: #e0b652;
+  --level-good: #34c759;
+  --level-strong: #b388ff;
+  left: 847px;
+  top: 80px;
+  height: calc(728px + var(--warning-space));
+}
+.register-panel.has-name-warning { --name-warning-space: 32px; }
+.register-panel.has-email-warning { --email-warning-space: 32px; }
+.register-panel.has-confirm-warning { --confirm-warning-space: 32px; }
+.register-panel .coup-emblem { left: 200px; top: 11px; width: 92px; height: 92px; }
+.register-panel h1 { left: 61px; top: 93px; }
+.register-panel .credential-field { left: 48px; }
+.register-panel .name-field { top: 179px; }
+.register-panel .name-field input::placeholder { color: transparent; }
+.name-placeholder {
+  position: absolute;
+  left: 46px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: var(--color-coup-cream);
+  font: 21px/26px var(--font-body);
+  pointer-events: none;
+  white-space: pre;
+}
+.name-placeholder span + span { color: #677296; }
+.name-field:focus-within .name-placeholder { display: none; }
+.register-panel .email-field { top: calc(268px + var(--name-warning-space)); }
+.register-panel .password-field { top: calc(357px + var(--password-shift)); }
+.register-panel .confirm-field { top: calc(496px + var(--password-shift)); }
+.register-panel .name-field .field-icon { left: 10.25px; top: 13.25px; width: 26.5px; height: 29.5px; }
+/* The password warning sits 8 px below the strength bars, in place of the hint. */
+.register-panel .password-field .field-warning { top: 83px; left: 11px; }
+
+/* Strength levels color the password border, the bars, and the label. */
+.register-panel .level-weak .password-field { border-color: var(--level-weak); }
+.register-panel .level-fair .password-field { border-color: var(--level-fair); }
+.register-panel .level-good .password-field { border-color: var(--level-good); }
+.register-panel .level-strong .password-field { border-color: var(--level-strong); }
+/* A warning wins over the strength color, so every warned field looks the same, as on the login. */
+.register-panel .password-strength .password-field.has-warning { border-color: var(--color-coup-gold); }
+.password-meter { position: absolute; left: 64px; top: calc(431px + var(--password-shift)); width: 355px; height: 4px; }
+.meter-bar { position: absolute; top: 0; width: 79px; height: 4px; border-radius: 2px; background: #313a57; }
+.meter-bar:nth-child(2) { left: 92px; }
+.meter-bar:nth-child(3) { left: 183px; }
+.meter-bar:nth-child(4) { left: 276px; }
+.level-weak .meter-bar.on { background: var(--level-weak); }
+.level-fair .meter-bar.on { background: var(--level-fair); }
+.level-good .meter-bar.on { background: var(--level-good); }
+.level-strong .meter-bar.on { background: var(--level-strong); }
+/* The empty-state "-" is centered on the bars; the level words keep their Figma line. */
+.password-level {
+  position: absolute;
+  left: 430px;
+  top: calc(417.25px + var(--password-shift));
+  margin: 0;
+  color: #fff;
+  font: 24px/normal var(--font-body);
+  white-space: nowrap;
+}
+.password-strength[class*="level-"] .password-level { top: calc(416px + var(--password-shift)); font: 800 23px/normal "Abhaya Libre", Georgia, serif; }
+.level-weak .password-level { left: 424px; color: var(--level-weak); font-size: 24px; }
+.level-fair .password-level { left: 426px; color: var(--level-fair); }
+.level-good .password-level { left: 423px; color: var(--level-good); }
+.level-strong .password-level { left: 421px; color: var(--level-strong); }
+.password-hint {
+  position: absolute;
+  left: 62px;
+  top: calc(441px + var(--password-shift));
+  margin: 0;
+  color: #7d8bad;
+  font: 20px/normal var(--font-body);
+}
+
+/* The tips bubble is positioned from the help icon so its pointer always leads back to the question mark. */
+.password-help-group {
+  position: absolute;
+  z-index: 3;
+  left: 456px;
+  top: calc(378px + var(--password-shift));
+  width: 25px;
+  height: 25px;
+}
+.password-help {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #c99b34;
+  cursor: help;
+}
+.password-help img { position: absolute; left: -6px; top: -6px; width: 37px; max-width: none; height: 37px; pointer-events: none; }
+.password-help span { position: absolute; left: 7px; top: -1px; font: 700 22px/normal "Inria Serif", Georgia, serif; letter-spacing: .44px; text-shadow: 0 0 5px rgb(201 155 52 / 65%); }
+.password-help:focus-visible { outline: 2px solid var(--color-coup-gold); outline-offset: 4px; }
+/* The Figma "Tips" bubble (226:3071), measured from the 25 px "?" button. The tail tip sits where Figma puts it,
+   at x 7, just above the ring, and the bubble ends 12 px inside the panel border. */
+.password-tips {
+  position: absolute;
+  left: -226.5px;
+  top: -129.5px;
+  width: 255px;
+  height: 137.243px;
+  pointer-events: auto;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: visibility 150ms ease, transform 150ms ease;
+}
+/* Each layer fades on its own, so the blur behind the bubble works during the fade too. */
+.password-tips > * { position: absolute; opacity: 0; transition: opacity 150ms ease; }
+.password-tips.open { visibility: visible; transform: translateY(0); }
+.password-tips.open > * { opacity: 1; }
+.tips-blur { inset: 0; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.tips-bubble { inset: 0; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 4px 4px rgb(0 0 0 / 25%)); }
+.tips-bubble path { fill: rgb(49 58 87 / 75%); stroke: #c99b34; }
+.tips-text {
+  left: 11.5px;
+  top: 3.5px;
+  width: 232px;
+  color: #fff;
+  font: 800 15px/normal "Abhaya Libre", Georgia, serif;
+}
+.tips-text strong { display: block; color: #c99b34; font-weight: inherit; }
+.tips-text ul { margin: 0; padding-left: 18px; list-style: disc; }
+
+.register-panel .auth-button { left: 47px; top: calc(597px + var(--warning-space)); }
+.signin-prompt {
+  position: absolute;
+  left: 90px;
+  top: calc(671px + var(--warning-space));
+  margin: 0;
+  color: var(--color-coup-cream);
+  font-size: 22px;
+  line-height: 32px;
+  white-space: nowrap;
+}
+.signin-link { color: #c9a24b; font-size: 24px; }

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "./base.css";
+@import "./auth.css";
 @import "./login.css";
+@import "./register.css";
 
 @theme {
   --font-display: "Playfair Display", Georgia, serif;
