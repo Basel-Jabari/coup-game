@@ -14,10 +14,11 @@ Build one Coup game platform. The target stack is React, TypeScript, Vite, and T
 | Database query, transaction, or schema change | [Backend rules](backend/AGENTS.md) and [backend data guide](docs/ai/backend-data.md) |
 | Frontend screen, component, style, or UI test | [Frontend rules](frontend/AGENTS.md) |
 | Independent review before a commit | [AI review guide](docs/ai/ai-review.md) |
+| Security document or shared security rule | [Security docs guide](docs/ai/security-docs.md) |
 | Create or update a PR, or maintain docs | [PR and docs guide](docs/ai/pull-requests.md) |
 | Understand the AI file setup | [Tool setup](docs/ai/tool-setup.md) |
 
-The matching skills are `coup-backend-feature`, `coup-backend-data`, `coup-frontend-feature`, `coup-ai-review`, and `coup-pull-request`. Their entry files are under `.agents/skills/` for Codex and `.claude/skills/` for Claude. Both point to the same guides above. Read the guide directly if the current tool cannot load skills.
+The matching skills are `coup-backend-feature`, `coup-backend-data`, `coup-frontend-feature`, `coup-ai-review`, `coup-security-docs`, and `coup-pull-request`. Their entry files are under `.agents/skills/` for Codex and `.claude/skills/` for Claude. Both point to the same guides above. Read the guide directly if the current tool cannot load skills.
 
 ## Project layout
 
@@ -29,6 +30,7 @@ The matching skills are `coup-backend-feature`, `coup-backend-data`, `coup-front
 - `integration/mocks/`: sample data for development and tests.
 - `integration/tests/`: checks across the frontend and backend.
 - `docs/`: project notes, design details, setup guidance, and saved previews.
+- `docs/security/`: security documents for the report, with PDFs and references.
 - `scripts/`: shared developer tools, such as the AI review command.
 - `.github/`: PR templates, CI, and saved repository rules.
 

@@ -13,6 +13,7 @@ frontend/
     pages/            # One component for each screen.
     components/       # UI parts shared by screens.
     styles/           # index.css (Tailwind and color tokens), base.css, one file for each screen.
+    security/         # Checks that the backend repeats, such as the password policy.
     services/         # API and WebSocket clients, once the backend exists.
   tests/              # Vitest and Testing Library tests, named after the page or component.
 ```
