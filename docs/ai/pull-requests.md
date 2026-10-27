@@ -2,6 +2,8 @@
 
 Follow the [repository rules](../../AGENTS.md) and use the [PR template](../../.github/pull_request_template.md).
 
+Before starting a branch, follow the [branch naming rules](../../AGENTS.md#branch-names).
+
 ## Prepare or update a PR
 
 1. Read the final diff and its purpose. Keep unrelated work out of the PR.
