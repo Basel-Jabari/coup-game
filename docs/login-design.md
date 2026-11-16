@@ -53,6 +53,8 @@ Spaces around the email are ignored. The password has no length rule. A warning 
 
 Valid fields do nothing yet. There is no request, loading state, red error, or retry delay; only the backend can decide whether an account exists. "Forgot your password?" shows a short "not available yet" notice. "Sign up" opens the register screen at `/register`.
 
+The planned password recovery flow sends an expiring, single-use code by email. The player returns to the website and enters the code there. Sign-in codes are mandatory for administrators and optional for players. These flows are not implemented in this preview; follow [project context](project-context.md) when connecting the backend.
+
 ## Run and test
 
 Double-click `Start-Login.cmd` in the `coup-game` folder, or run `npm run dev` and open the Local URL. If port 5173 is busy, another free port is used. Close the terminal window or press Ctrl+C to stop the server. Opening `frontend/index.html` directly only shows these instructions.

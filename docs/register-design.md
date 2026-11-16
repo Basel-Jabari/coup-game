@@ -4,6 +4,8 @@
 
 Register screen at `/register`, in English, for desktop. Like the login, it is a frontend preview: it checks the fields locally and never contacts a server. Account creation, email verification, and the loading state come with the backend.
 
+The planned email confirmation flow sends an expiring, single-use code. The player returns to the website and enters that code to confirm the address. Follow [project context](project-context.md) when adding this flow; it is not implemented in the preview.
+
 Source: [Figma design](https://www.figma.com/design/gSwvUJYZiyFV5LTaTRcQvW/ui-login-register?node-id=233-1402), frame "Desktop - Register default" (233:1402), 1440 x 1024. Panel layer "login box" (233:1928), error panel (233:3083), cards (233:1927), strength states "password level" (233:1346), and button states "Frame 1" (233:767).
 
 ## Design values
