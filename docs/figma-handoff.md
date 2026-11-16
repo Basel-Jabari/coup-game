@@ -18,7 +18,7 @@ Most of these can be found in the file or agreed after the first review. Send th
 | Devices | Desktop, phone, or tablet. If only a desktop design exists, agree on the phone layout. |
 | Language | English, Arabic, or both. Arabic also changes the text direction and layout. |
 | Interactions | The clickable prototype, or short notes on what buttons, forms, menus, and dialogs do. |
-| Screen states | Loading, empty, success, error, disabled, waiting, and reconnecting states. Missing states can be proposed. |
+| Screen states | Loading, empty, success, error, disabled, waiting, and connection-loss states. Missing states can be proposed within the agreed scope. |
 | Assets | Logos, card artwork, card backs, table backgrounds, icons, and sounds. Export them if they cannot be taken from the file. |
 | Fonts | Font names, and font files for custom fonts that are not available otherwise. |
 | Design priority | Whether to copy each frame closely or allow agreed layout changes. |
@@ -28,3 +28,5 @@ You do not need to list every color, spacing value, or font size when the file s
 ## Backend work comes later
 
 A screen can be built before the backend exists. Connecting it later needs agreed API endpoints, request and response formats, session behavior, WebSocket messages, and server errors. Those agreements belong in `integration/contracts/`, with sample data in `integration/mocks/`.
+
+Follow [project context](project-context.md) for account and match flows. Email flows use codes entered on the website. A disconnected player leaves the match and can join a new one after returning; restoring a saved match is optional.

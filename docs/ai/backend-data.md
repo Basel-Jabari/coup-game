@@ -15,7 +15,7 @@ Use this guide when adding or changing a query, transaction, table, index, or mi
 1. Find the service that owns the full business action. Give it one clear commit/rollback boundary through the shared database setup.
 2. Pass the same session to the needed repositories. Repositories do not commit or open a second hidden transaction.
 3. Check how another request could change the same data. Use the chosen database's locking, version, or uniqueness support where needed. Keep authorization and business checks valid at the time of the write.
-4. For repeated game results, rewards, or payment events, use a stable operation ID and an enforced uniqueness rule. A retry must not credit the same result twice.
+4. For repeated Coup actions, rewards, or virtual-currency purchases, use a stable operation ID and an enforced uniqueness rule. A retry must not apply the same operation twice. The prototype uses test Gems; real-money purchases and payment processing are outside the [agreed scope](../project-context.md).
 5. Keep slow external calls outside held database locks where possible. If a workflow spans an external service and the database, explain how it recovers from a failed step before implementing it.
 
 ## Change the schema with the code

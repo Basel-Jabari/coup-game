@@ -2,6 +2,8 @@
 
 These rules apply to `backend/` and extend the [repository rules](../AGENTS.md). Read the relevant [feature guide](../docs/ai/backend-feature.md) or [data guide](../docs/ai/backend-data.md) for task steps.
 
+Follow the agreed Coup-only scope and security policies in [project context](../docs/project-context.md). Email flows use codes entered on the website. Real-money purchases and payment processing are outside the scope.
+
 ## File organization
 
 Use one modular FastAPI application. Group business areas by feature, then separate their responsibilities. This is the target layout, not a request to create empty files:
@@ -20,7 +22,7 @@ backend/
         repository.py            # Database reads and writes for this feature.
         models.py                # Database table mappings for this feature.
     games/coup/                  # Pure game state, rules, and legal actions.
-    integrations/                # Clients for email, payments, or other services.
+    integrations/                # Email client and other required external clients.
   migrations/                    # Schema history once a migration tool is set up.
   tests/                         # Backend tests, grouped by feature or game.
 ```
@@ -34,7 +36,7 @@ Keep small features small. Add only the files a working change needs. Split a fi
 - Services run use cases. They check permissions, ownership, business limits, and allowed state changes, using repositories and integration clients as needed.
 - Repositories use database models and the supplied session. They do not import routes or services, open hidden transactions, or commit on their own.
 - External clients handle a service's requests, responses, timeouts, and errors. Business rules stay in the owning service.
-- The pure Coup engine does not depend on FastAPI, database access, or network clients. Pass it the state and input it needs. Make time and randomness controllable in tests.
+- The pure Coup game logic does not depend on FastAPI, database access, or network clients. Pass it the state and input it needs. Make time and randomness controllable in tests.
 - Shared `core/` and `db/` code must not import feature modules. Other features call an owning service or a clear shared interface, rather than changing its tables directly.
 
 ## API and business rules
@@ -43,7 +45,9 @@ Use type hints on new Python functions. Give HTTP endpoints clear request/respon
 
 Get the current player from a validated server session. Apply the same permissions and game rules to HTTP and WebSocket actions. Typed application errors are mapped to safe responses in shared handlers; avoid repeated catch-log-raise blocks in every route.
 
-The server owns game results, prices, inventory, balances, and rewards. Return only the game information the current player may see. A full internal game state must never become a public response by default. Do not log passwords, tokens, payment secrets, or hidden cards.
+The server owns game results, prices, inventory, balances, and rewards. Return only the game information the current player may see. A full internal game state must never become a public response by default.
+
+Admin-only match audit logs include time, user and match IDs, action, result, reason, and current cards, including hidden cards. Record eliminated players with that status and an empty active hand. Keep hidden cards out of public feeds and general operational logs. Log successful and failed sign-ins, but never passwords, session tokens, or verification codes. Follow the remaining email-code, automatic request-limit, and disconnection rules in [project context](../docs/project-context.md).
 
 ## Data and tests
 

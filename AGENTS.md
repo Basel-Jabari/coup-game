@@ -4,7 +4,9 @@ These are the shared rules for Codex and Claude Code in this repository. Keep on
 
 ## Project direction
 
-Build one Coup game platform. The target stack is React, TypeScript, Vite, and Tailwind CSS for the interface, with one modular FastAPI backend, MySQL, and WebSockets. The backend runtime is not implemented yet. These instructions define how to add it; they do not mean its packages, commands, or services already exist. Frontend screens do not connect to a server until the user asks for backend integration.
+The project title is **Design and Security Evaluation of a Multiplayer Coup Platform**. Build a website for Coup only, with no plans for other games or a shared multi-game platform. Follow the agreed scope and rules in [project context](docs/project-context.md), including email codes entered on the website, test Gems, admin-only match audit logs, and player disconnections.
+
+The target stack is React, TypeScript, Vite, and Tailwind CSS for the interface, with one modular FastAPI backend, Python Coup game logic, MySQL, and WebSockets. The backend runtime is not implemented yet. These instructions define how to add it; they do not mean its packages, commands, or services already exist. Frontend screens do not connect to a server until the user asks for backend integration.
 
 ## Task guides
 
@@ -34,7 +36,7 @@ The matching skills are `coup-backend-feature`, `coup-backend-data`, `coup-front
 - `scripts/`: shared developer tools, such as the AI review command.
 - `.github/`: PR templates, CI, and saved repository rules.
 
-Use one feature module for each backend area. Keep HTTP routes, request/response models, business rules, database code, and external clients in their assigned files. Add files when the feature needs them; keep the pure Coup engine separate from web and database code.
+Use one feature module for each backend area. Keep HTTP routes, request/response models, business rules, database code, and external clients in their assigned files. Add files when the feature needs them; keep the pure Coup game logic separate from web and database code.
 
 Keep tests in their assigned folders. Do not add a root `tests/` folder. Keep the root for shared tools, configuration, and entry files. Do not add README files unless the user asks for them.
 

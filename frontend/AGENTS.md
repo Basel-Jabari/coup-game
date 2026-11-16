@@ -30,6 +30,8 @@ Use the color and font tokens in `styles/index.css` instead of repeating values.
 
 Screens stay frontend-only until the user asks for backend integration. Local checks, such as required-field warnings, are fine. Do not add API requests, fake server responses, login results, or server error states before that. Shared API formats belong in `integration/contracts/`.
 
+When an account or match flow is added, follow [project context](../docs/project-context.md). Email confirmation, password recovery, and two-step verification use emailed codes that the user enters on the website. The shop uses virtual Gold and test Gems. A disconnected player leaves the match; the other players continue.
+
 ## Checks
 
 - Run `npm test` and `npm run build` from the repository root.
